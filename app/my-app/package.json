@@ -5,7 +5,9 @@
   "dependencies": {
     "google-map-react": "^0.25.0",
     "react": "^16.1.0",
+    "react-burger-menu": "^2.1.11",
     "react-dom": "^16.1.0",
+    "react-google-maps": "^9.2.2",
     "react-scripts": "1.0.17"
   },
   "scripts": {

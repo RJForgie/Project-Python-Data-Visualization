@@ -1,6 +1,8 @@
 import React from 'react';
 import RaceSelector from '../components/RaceSelector';
 import RaceDetail from '../components/RaceDetail';
+import MyMapComponent from '../components/MyMapComponent';
+import SideBar from '../components/SideBar';
 import data from '../data/races.json';
 
 class MainContainer extends React.Component {
@@ -14,8 +16,6 @@ class MainContainer extends React.Component {
   }
 
   componentDidMount(){
-      // const raceData = JSON.parse(data);
-      console.log(data)
       this.setState({races: data});
   }
 
@@ -27,13 +27,15 @@ class MainContainer extends React.Component {
 
   render(){
     return (
-      <div>
-        <h2>Race Container</h2>
+      <div id="wrapper">
+        <div id="sidebar"></div>
         <RaceSelector
           races={this.state.races}
           onRaceSelected={this.handleRaceSelected}
         />
         <RaceDetail race={this.state.currentRace}/>
+        <MyMapComponent id="map" />
+        {/* <SideBar /> */}
       </div>
     );
   }

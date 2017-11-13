@@ -13,6 +13,7 @@ const RaceSelector = (props) => {
   return (
     <select
       defaultValue="default"
+      style={{zIndex: `100`, position: `absolute`}}
       name="race-selector"
       id="race-selector"
       onChange={handleChange}
