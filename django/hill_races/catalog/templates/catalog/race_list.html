@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Race List</h1>
+
+    {% if race_list %}
+    <ul>
+
+      {% for race in race_list %}
+      <li>
+        <a href="{{ race.get_absolute_url }}">{{ race.name }}</a> ({{race.location}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no races in the list</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Hill Races Home</h1>
+
+  <p>Welcome to <em>HillRaces</em>, a very basic Django website.</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The website has the following record counts:</p>
+  <ul>
+    <li><strong>Races:</strong> {{ num_races }}</li>
+  </ul>
+
+{% endblock %}
