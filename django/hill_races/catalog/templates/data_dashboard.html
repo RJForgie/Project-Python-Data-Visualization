@@ -1,7 +1,118 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="chart_container" class=one ></div>
+    <div id="chart_container1" class=two ></div>
+    <div id="chart_container2" class=three></div>
+  </div>
 
-  <p>Hello world</p>
+  {% for race in all_races %}
+  <li>
+    <p>{{race.name}}</p>
+    <p>{{race.distance}}</p>
+  </li>
+  {% endfor %}
+</body>
+<!--javascript for charts
+-->
+<script>
+$(function () {
+  var chartData = []
+  {% for race in all_races %}
+  chartData.push({{race.distance}})
+  {% endfor %}
+$('#chart_container').highcharts({
+  chart: {
+  type: 'areaspline'
+  },
+  title: {
+    text: 'Race Frequency'
+  },
+  xAxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  yAxis: {
+  title: {
+    text: 'races'
+  }
+},
+series: [{
+  data: chartData
+  }
+  // ,
+  // {
+  // name: 'King',
+  // data: [5, 7, 3]
+  // }
+]
+  });
+});
+$(function () {
+$('#chart_container1').highcharts({
+  chart: {
+  type: 'pie'
+  },
+  title: {
+    text: 'Race Frequency'
+  },
+  xAxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  yAxis: {
+  title: {
+    text: 'races'
+  }
+},
+series: [{
+
+  data: [5, 2, 4, 6, 7, 2, 4, 6, 12, 2, 4, 5]
+  }
+  // ,
+  // {
+  // name: 'King',
+  // data: [5, 7, 3]
+  // }
+]
+  });
+});
+$(function () {
+$('#chart_container2').highcharts({
+  chart: {
+  type: 'pie'
+  },
+  title: {
+    text: 'Race Frequency'
+  },
+  xAxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  yAxis: {
+  title: {
+    text: 'races'
+  }
+},
+series: [{
+
+  data: [5, 2, 4, 6, 7, 2, 4, 6, 12, 2, 4, 5]
+  }
+  // ,
+  // {
+  // name: 'King',
+  // data: [5, 7, 3]
+  // }
+]
+  });
+});
+</script>
+</body>
+</html>
+
 
 {% endblock %}

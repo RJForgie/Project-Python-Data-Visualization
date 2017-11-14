@@ -22,9 +22,13 @@ def index(request):
 
 def data(request):
     # Render the HTML template index.html with the data in the context variable
+    all_races=Race.objects.all()
+    
+
     return render(
         request,
         'data_dashboard.html',
+        context={'all_races':all_races},
     )
 
 class RaceListView(generic.ListView):
