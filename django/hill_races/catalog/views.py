@@ -23,12 +23,16 @@ def index(request):
 def data(request):
     # Render the HTML template index.html with the data in the context variable
     all_races=Race.objects.all()
-    
+    months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for index, race in enumerate(all_races):
+        if (int(race.date[6:8]) == 17):
+            month = int(race.date[3:5])
+            months[month - 1] += 1
 
     return render(
         request,
         'data_dashboard.html',
-        context={'all_races':all_races},
+        context={'months':months},
     )
 
 class RaceListView(generic.ListView):

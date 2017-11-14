@@ -1,6 +1,7 @@
 import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import mapStyle from '../mapStyle.jsx'
 
 const MyMapComponent = compose(
   withProps({
@@ -14,15 +15,22 @@ const MyMapComponent = compose(
 )((props) =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultCenter={{ lat: 55.8449378, lng: -3.2908776 }}
+    defaultOptions={{ styles: mapStyle }}
+    defaultMapTypeId={"terrain"}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+    {props.isMarkerShown && <Marker position={{ lat: 55.8449378, lng: -3.2908776 }} onClick={props.onMarkerClick} />}
+    {/* <Marker
+    position={{ lat: 55.8449378, lng: -3.2908776 }}
+    onClick={props.onToggleOpen}
+  ></Marker> */}
   </GoogleMap>
+
 )
 
 class MyFancyComponent extends React.PureComponent {
   state = {
-    isMarkerShown: false,
+    isMarkerShown: true,
   }
 
   componentDidMount() {

@@ -24,10 +24,10 @@
 -->
 <script>
 $(function () {
-  var chartData = []
-  {% for race in all_races %}
-  chartData.push({{race.distance}})
-  {% endfor %}
+  var chartData = {{months}}
+  // {% for race in all_races %}
+  // chartData.push({{race.distance}})
+  // {% endfor %}
 $('#chart_container').highcharts({
   chart: {
   type: 'areaspline'

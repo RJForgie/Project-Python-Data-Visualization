@@ -2,11 +2,9 @@ import scrapy
 import re
 
 class RaceItem(scrapy.Item):
-    name = scrapy.Field()
-    date = scrapy.Field()
-    venue = scrapy.Field()
-    distance = scrapy.Field()
-    climb = scrapy.Field()
+    model = scrapy.Field()
+    pk = scrapy.Field()
+    fields = scrapy.Field()
 
 
 class RaceSpider(scrapy.Spider):
@@ -23,12 +21,12 @@ class RaceSpider(scrapy.Spider):
         distances = response.xpath('//*[@id="dgRacesAll"]//td[position()=6]/text()').extract()
         climbs = response.xpath('//*[@id="dgRacesAll"]//td[position()=7]/text()').extract()
         for index, elem in enumerate(links):
-            grabbedName = elem
-            grabbedDate = dates[index + 1]
-            strippedDate = grabbedDate[4:]
-            grabbedVenue = venues[index + 1]
-            grabbedDistance = distances[index + 1]
-            grabbedClimb = climbs[index + 1]
-            yield RaceItem(name=grabbedName, date = strippedDate, venue = grabbedVenue, distance = grabbedDistance, climb=grabbedClimb)
-
-    
+            if ((climbs[index+1]).strip() != ""):
+                grabbedName = elem
+                grabbedDate = dates[index + 1]
+                strippedDate = grabbedDate[4:]
+                grabbedVenue = venues[index + 1]
+                grabbedDistance = float(distances[index + 1])
+                grabbedClimb = int(climbs[index + 1])
+                fields ={"name": grabbedName, "date": strippedDate, "location":grabbedVenue, "distance":grabbedDistance, "climb": grabbedClimb}
+                yield RaceItem(model="catalog.race", pk= (index + 1), fields=fields )

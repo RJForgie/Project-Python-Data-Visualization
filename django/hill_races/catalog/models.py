@@ -12,7 +12,7 @@ class Race(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     date = models.CharField(max_length=10)
-    distance = models.IntegerField()
+    distance = models.FloatField()
     climb = models.IntegerField()
 
 
