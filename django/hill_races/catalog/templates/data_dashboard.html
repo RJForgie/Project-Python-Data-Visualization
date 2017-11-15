@@ -34,7 +34,7 @@ $('#chart_container').highcharts({
   },
   yAxis: {
   title: {
-    text: 'races'
+    text: 'Races'
   }
 },
 series: [{
@@ -55,13 +55,13 @@ $('#chart_container1').highcharts({
   },
   xAxis: {
   title: {
-    text: 'climb'
+    text: 'Climb (metres)'
   }
 
   },
   yAxis: {
   title: {
-    text: 'distance'
+    text: 'Distance (km)'
   }
 },
 series: [{
@@ -77,26 +77,36 @@ $('#chart_container2').highcharts({
   type: 'pie'
   },
   title: {
-    text: 'Race Frequency'
+    text: 'Race Distance'
   },
-  xAxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  },
-  yAxis: {
-  title: {
-    text: 'races'
-  }
-},
-series: [{
 
-  data: [5, 2, 4, 6, 7, 2, 4, 6, 12, 2, 4, 5]
-  }
-  // ,
-  // {
-  // name: 'King',
-  // data: [5, 7, 3]
-  // }
-]
+  yAxis: {
+},
+
+series: [{
+        colorByPoint: true,
+        data: [{
+            name: '1 - 5 km',
+            y: 56.33
+        }, {
+            name: '5 - 10 km',
+            y: 24.03,
+            // sliced: true,
+            // selected: true
+        }, {
+            name: '10 - 15 km',
+            y: 10.38
+        }, {
+            name: '15 - 20 km',
+            y: 4.77
+        }, {
+            name: '20 -25 km',
+            y: 0.91
+        }, {
+            name: '25 km +',
+            y: 0.2
+        }]
+    }]
   });
 });
 </script>

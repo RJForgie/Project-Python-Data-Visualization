@@ -24,7 +24,8 @@ def data(request):
     # Render the HTML template index.html with the data in the context variable
     all_races=Race.objects.all()
     months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    distance_climb = []
+    distance_climb = [0, 0, 0, 0, 0, 0]
+    distance_catagories = []
     for index, race in enumerate(all_races):
         if (int(race.date[6:8]) == 17):
             month = int(race.date[3:5])
@@ -36,10 +37,12 @@ def data(request):
             single_race.append(race.climb)
             single_race.append(race.distance)
             distance_climb.append(single_race)
+
+    for index, race in enumerate(all_races):
     return render(
         request,
         'data_dashboard.html',
-        context={'months':months, 'distance_climb':distance_climb},
+        context={'months':months, 'distance_climb':distance_climb, 'distance_catagories':distance_catagories},
     )
 
 class RaceListView(generic.ListView):
