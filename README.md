@@ -18,4 +18,4 @@ For the final CodeClan project we had the freedom to explore new languages and f
 
 ## Screenshots
 
-![screenshot](https://github.com/RJForgie/Project-Java-Run-List/blob/master/screenshot.png "App Screenshots")
+![screenshot](https://github.com/RJForgie/Project-Python-Data-Visualization/blob/master/Python%20Screenshot.png")
