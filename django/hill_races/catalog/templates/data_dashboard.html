@@ -14,14 +14,10 @@
   </div>
 
 </body>
-<!--javascript for charts
--->
+
 <script>
 $(function () {
   var chartData = {{months}}
-  // {% for race in all_races %}
-  // chartData.push({{race.distance}})
-  // {% endfor %}
 $('#chart_container').highcharts({
   chart: {
   type: 'areaspline'
@@ -72,6 +68,7 @@ series: [{
   });
 });
 $(function () {
+  var chartData = {{distance_catagories}}
 $('#chart_container2').highcharts({
   chart: {
   type: 'pie'
@@ -87,24 +84,24 @@ series: [{
         colorByPoint: true,
         data: [{
             name: '1 - 5 km',
-            y: 56.33
+            y: chartData[0]
         }, {
             name: '5 - 10 km',
-            y: 24.03,
-            // sliced: true,
-            // selected: true
+            y: chartData[1]
         }, {
             name: '10 - 15 km',
-            y: 10.38
+            y: chartData[2],
+            sliced: true,
+            selected: true
         }, {
             name: '15 - 20 km',
-            y: 4.77
+            y: chartData[3]
         }, {
             name: '20 -25 km',
-            y: 0.91
+            y: chartData[4]
         }, {
             name: '25 km +',
-            y: 0.2
+            y: chartData[5]
         }]
     }]
   });
@@ -112,6 +109,4 @@ series: [{
 </script>
 </body>
 </html>
-
-
 {% endblock %}

@@ -28,5 +28,6 @@ class RaceSpider(scrapy.Spider):
                 grabbedVenue = venues[index + 1]
                 grabbedDistance = float(distances[index + 1])
                 grabbedClimb = int(climbs[index + 1])
-                fields ={"name": grabbedName, "date": strippedDate, "location":grabbedVenue, "distance":grabbedDistance, "climb": grabbedClimb}
+                fields ={"name": grabbedName, "date": strippedDate, "location":grabbedVenue,
+                "distance":grabbedDistance, "climb": grabbedClimb}
                 yield RaceItem(model="catalog.race", pk= (index + 1), fields=fields )
